@@ -15,4 +15,5 @@ public class Article {
 	private int memberid;
 	private String regDate;
 	private String modDate;
+	private String writer;
 }

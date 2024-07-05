@@ -7,15 +7,19 @@
 		VALUES ( SEQ_ARTICLE.NEXTVAL, #{title}, #{content}, #{memberid}, SYSDATE )
 	</insert>
 	<select id="getArticles" resultType="Article">
-		SELECT ID, TITLE, CONTENT, REGDATE, MODDATE 
-		FROM ARTICLE 
+		SELECT A.ID, A.TITLE, A.CONTENT, A.REGDATE, A.MODDATE, B.NAME WRITER 
+		FROM ARTICLE A
+		     LEFT OUTER JOIN MEMBER B
+		     ON A.MEMBERID = B.ID
 		ORDER BY ID DESC
 	</select>
 	
 	<select id="getArticle" resultType="Article">
-		SELECT ID, TITLE, CONTENT, REGDATE, MODDATE 
-		FROM ARTICLE 
-		WHERE ID = #{id}
+		SELECT A.ID, A.TITLE, A.CONTENT, A.REGDATE, A.MODDATE, B.NAME WRITER 
+		FROM ARTICLE A
+		     LEFT OUTER JOIN MEMBER B
+		     ON A.MEMBERID = B.ID
+		WHERE A.ID = #{id}
 	</select>
 	<delete id="deleteArticle" >
 		DELETE FROM ARTICLE 

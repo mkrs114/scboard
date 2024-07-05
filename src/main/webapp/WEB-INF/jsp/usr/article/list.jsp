@@ -9,6 +9,13 @@
     <div class="container mx-auto px-3">
         <div class="table-box-type-1">
             <table border="1">
+                <colgroup>
+                        <col width="50"/>
+                        <col width="500"/>
+                        <col width="150"/>
+                        <col width="150"/>
+                        <col width="150"/>
+                </colgroup>
                 <thead>
                     <tr>
                         <th>번호</th>
@@ -25,7 +32,7 @@
                             <td>
                                 <a href="../article/detail?id=${article.id}">${article.title}</a>
                             </td>
-                            <td>${article.memberid}</td>
+                            <td>${article.writer}</td>
                             <td>${article.regDate.substring(2,16)}</td>
                             <td>${article.modDate.substring(2,16)}</td>
                         </tr>
