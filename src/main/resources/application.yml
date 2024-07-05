@@ -1,0 +1,27 @@
+# Server 
+server:
+  port: 8080
+
+# mybatis
+spring:
+  application:
+    name: SCBoard
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    #driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:oracle:thin:@192.168.0.201:1521:ora
+    username: scboard
+    password: msnks
+
+mybatis: 
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.msnks.scboard.vo
+
+custom:
+  logging:
+    dir: log
+      

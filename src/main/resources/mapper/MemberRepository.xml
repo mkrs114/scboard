@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msnks.scboard.Repository.MemberRepository">
+
+	<insert id="join">
+		INSERT INTO MEMBER
+		( ID,
+		LOGINID ,
+		LOGINPW ,
+		AUTHLEVEL ,
+		NAME ,
+		NICKNAME ,
+		CELLPHONENO ,
+		EMAIL ,
+		DELSTATUS ,
+		REGDATE
+		)
+		VALUES
+		( SEQ_MEMBER.NEXTVAL
+		, #{loginId}
+		, #{loginPw}
+		, '3'
+		, #{name}
+		, #{nickname}
+		, #{cellphoneNo}
+		, #{email}
+		, '0'
+		, SYSDATE
+		)
+	</insert>
+
+	<select id="getLastInsertID" resultType="int">
+		SELECT TO_NUMBER(MAX(ID)) ID 
+		FROM MEMBER
+	</select>
+	
+	<select id="getMemberById" resultType="Member">
+		SELECT ID,
+		       LOGINID ,
+		       LOGINPW ,
+		       AUTHLEVEL ,
+		       NAME ,
+		       NICKNAME ,
+		       CELLPHONENO ,
+		       EMAIL ,
+		       DELSTATUS ,
+		       REGDATE
+		FROM  MEMBER
+		WHERE ID = #{id}		
+	</select>
+	
+	<select id="getMemberByLoginId" resultType="Member">
+		SELECT ID,
+		       LOGINID ,
+		       LOGINPW ,
+		       AUTHLEVEL ,
+		       NAME ,
+		       NICKNAME ,
+		       CELLPHONENO ,
+		       EMAIL ,
+		       DELSTATUS ,
+		       REGDATE
+		FROM  MEMBER
+		WHERE LOGINID = #{loginId}		
+	</select>
+
+	<select id="getMemberByNameAndEmail" resultType="Member">
+		SELECT ID,
+		       LOGINID ,
+		       LOGINPW ,
+		       AUTHLEVEL ,
+		       NAME ,
+		       NICKNAME ,
+		       CELLPHONENO ,
+		       EMAIL ,
+		       DELSTATUS ,
+		       REGDATE
+		FROM  MEMBER
+		WHERE NAME = #{name}
+		AND    EMAIL = #{email}		
+	</select>
+
+</mapper>
